@@ -1,6 +1,6 @@
-# Vet Clinic Database
+# Clinic Database
 
-> This is a database for a Vet Clinic built using plain SQL.
+> This is a database of a clinic built using plain SQL.
 
 ## Built With:
 - SQL
