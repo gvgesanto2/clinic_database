@@ -1,8 +1,7 @@
 CREATE TABLE patients (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name VARCHAR NOT NULL,
-    date_of_birth DATE NOT NULL,
-    PRIMARY KEY (id)
+    date_of_birth DATE NOT NULL
 );
 
 CREATE TABLE medical_histories (
@@ -10,8 +9,7 @@ CREATE TABLE medical_histories (
     admitted_at TIMESTAMP NOT NULL,
     patient_id INT NOT NULL,
     status VARCHAR NOT NULL,
-    CONSTRAINT fk_patients FOREIGN KEY (patient_id) REFERENCES patients(id),
-    PRIMARY KEY (id)
+    CONSTRAINT fk_patients FOREIGN KEY (patient_id) REFERENCES patients(id)
 );
 
 CREATE TABLE invoices (
@@ -21,7 +19,6 @@ CREATE TABLE invoices (
     payed_at TIMESTAMP NOT NULL,
     medical_history_id INT NOT NULL,
     CONSTRAINT fk_medical_histories FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id)
-    PRIMARY KEY (id)
 );
 
 CREATE TABLE invoice_items (
@@ -31,16 +28,14 @@ CREATE TABLE invoice_items (
     total_price DECIMAL NOT NULL,
     invoice_id INT NOT NULL,
     treatment_id INT NOT NULL,
-    CONSTRAINT fk_invoices FOREIGN KEY (invoice_id) REFERENCES invoices(id)
+    CONSTRAINT fk_invoices FOREIGN KEY (invoice_id) REFERENCES invoices(id),
     CONSTRAINT fk_treatments FOREIGN KEY (treatment_id) REFERENCES treatments(id)
-    PRIMARY KEY (id)
 );
 
 CREATE TABLE treatments (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     type VARCHAR NOT NULL,
-    name VARCHAR NOT NULL,
-    PRIMARY KEY (id)
+    name VARCHAR NOT NULL
 );
 
 CREATE TABLE medical_histories_treatments (
